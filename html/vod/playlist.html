@@ -1,0 +1,35 @@
+{maccms:foreach name="obj.vod_play_list" by="sort" id="vo"}
+<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel stui-pannel-bg clearfix">
+	<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel-box b playlist mb">
+		{:rand_label(mt_rand(6,10))}
+		<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel_hd">
+			<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel__head bottom-line active clearfix">
+				{:rand_label(mt_rand(6,10))}
+				<span class="{:randStr(mt_rand(5,6))} more text-muted pull-right">{$vo.player_info.tip}</span>
+				<h3 class="{:randStr(mt_rand(5,6))} title">
+					<img src="{$maccms.path_tpl}statics/icon/icon_30.png"/>
+					{$vo.player_info.show}
+				</h3>						
+			</div>																		
+		</div>
+		{:rand_label(mt_rand(6,10))}
+		<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel_bd col-pd clearfix">
+			<ul class="{:randStr(mt_rand(5,6))} stui-content__playlist clearfix">
+				{:rand_label(mt_rand(6,10))}
+				{maccms:foreach name="vo.urls" id="vo2"}
+                <li {if condition="$param.sid eq $vo.sid && $param.nid eq $vo2.nid"}class="{:randStr(mt_rand(5,6))} active"{else}class="{:randStr(mt_rand(5,6))}"{/if}><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a></li>
+                {/maccms:foreach}
+                {if condition="$obj.vod_status eq 0"}
+                <?php
+                	$total = mt_rand(38, 100);
+                ?>
+                {maccms:vod num="'.$total.'" by="rnd" show="keywords" key="key2" id="vo2"}
+				<li class="{:randStr(mt_rand(5,6))}"><a href="{:mac_url_vod_play($vo2,['sid'=>$vo2.sid,'nid'=>$vo2.nid])}">第{$key2+1}集</a></li>
+				{/maccms:vod}
+				{/if}
+			</ul>
+		</div>
+		{:rand_label(mt_rand(6,10))}
+	</div>
+</div>
+{/maccms:foreach}

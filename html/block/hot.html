@@ -1,0 +1,44 @@
+<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel stui-pannel-bg clearfix">
+	<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel-box">
+		{:rand_label(mt_rand(6,10))}
+		<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel_hd">
+			<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel__head active bottom-line clearfix">
+				<h3 class="{:randStr(mt_rand(5,6))} title">
+					<img src="{$maccms.path_tpl}statics/icon/icon_12.png"/>
+					{$obj.type_name}周榜单
+				</h3>						
+			</div>																		
+		</div>
+		{:rand_label(mt_rand(6,10))}
+		<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel_bd">
+			<ul class="{:randStr(mt_rand(5,6))} stui-vodlist__text col-pd clearfix">
+				{maccms:vod num="20" type="'.$obj['type_id'].'" order="desc" by="hits_week"}
+					{include file="block/vod_box_rank"}	
+				{/maccms:vod}
+			</ul>	
+		</div>
+	</div>
+</div>
+{:rand_label(mt_rand(6,10))}
+<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel stui-pannel-bg clearfix">
+	<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel-box">
+		{:rand_label(mt_rand(6,10))}
+		<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel_hd">
+			<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel__head active bottom-line clearfix">
+				<h3 class="{:randStr(mt_rand(5,6))} title">
+					<img src="{$maccms.path_tpl}statics/icon/icon_12.png"/>
+					{$obj.type_name}月榜单
+				</h3>						
+			</div>																		
+		</div>
+		{:rand_label(mt_rand(6,10))}
+		<div {:rand_property()} class="{:randStr(mt_rand(5,6))} stui-pannel_bd">
+			<ul class="{:randStr(mt_rand(5,6))} stui-vodlist__text col-pd clearfix">
+				{maccms:vod num="20" type="'.$obj['type_id'].'" order="desc" by="hits_month"}
+					{include file="block/vod_box_rank"}	
+				{/maccms:vod}
+			</ul>	
+		</div>
+	</div>
+	{:rand_label(mt_rand(6,10))}
+</div>

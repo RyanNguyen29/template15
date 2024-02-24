@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    {include file="seo/index"}
+    {include file="block/include"}
+</head>
+
+<body>
+    <style type="text/css">
+        .pc_acmsd {
+            display: block;
+        }
+
+        .m_acmsd {
+            display: none
+        }
+
+        @media(max-width:768px) {
+            .pc_acmsd {
+                display: none !important;
+            }
+
+            .m_acmsd {
+                display: block !important;
+            }
+        }
+    </style>
+    {include file="block/head"}
+    {include file="index/slide"}
+    </div>
+    {include file="index/subslide"}
+    <script src="{$maccms.path_tpl}/statics/js/b.js"></script>
+    
+    {include file="vod/list"}
+
+    <div class="footer clearfix">
+        <div class="wrap">
+            <a href="/new.html" target="_blank" title="最近更新">最近更新</a>·<a href="/rank.html" target="_blank"
+                title="影片排行">影片排行</a>·<a href="/rss/baidu.xml" target="_blank" title="百度蜘蛛">百度蜘蛛</a>·<a
+                href="/rss/google.xml" target="_blank" title="谷歌地图">谷歌地图</a>·<a href="/rss/index.xml" target="_blank"
+                title="rss">rss</a>·<a href="/rss/baidu.xml" target="_blank" title="百度地图">百度地图</a>
+            <p>声明：本站视频内容仅供浏览测试交流,不制作上传,不提供视频储存下载。</p>
+            <p>如不慎侵犯贵司权益，版权问题请联系
+                <script type="text/javascript" src="{$maccms.path_tpl}\statics\js\bqmail.js"></script> 收到会及时处理。
+            </p>
+            <p>Copyright© 2023-2033 {$maccms.site_name} {$maccms.site_url} All Rights Reserved</p>
+
+        </div>
+        <div class="gotop">
+            <a href="javascript:;" rel="nofollow" title="返回顶部"><i class="ico gotopbg"></i></a><a
+                href="javascript:void(0);" rel="nofollow"><i class="ico gbbg"></i></a>
+        </div>
+
+        <script>new Function(document.currentScript.previousElementSibling.textContent.replace(/%lt;/gi, '<').replace(/%gt;/gi, '>'))();</script>
+
+
+    </div>
+
+    <script>
+        resizeImgCommon('data_list');
+        $(window).on('resize', function () { resizeImgCommon('data_list'); });
+        $('#data_list img').lazyload({ data_attribute: 'src', threshold: 30 });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<div class="indexslider slide_container clearfix mb20 pcyc">
+    <ul class="rslides" id="slider">
+        {maccms:type num="9" order="asc" by="rnd" id="vo"}
+
+        <li>
+            <a class="alink" href="{:mac_url_type($vo)}">
+                <img class="lazy"
+                    src="{$vo.vod_pic}"
+                    alt="{$vo.type_name}">
+                <p class="caption"><span class="sltitle">{$vo.type_name}</span><span class="sldes">...</span></p>
+            </a>
+        </li>
+        {/maccms:type}
+    </ul>
+</div>

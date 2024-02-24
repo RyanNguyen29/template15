@@ -1,0 +1,5 @@
+<li class="{:randStr(mt_rand(5,6))} {if condition="$key gt 1"}top-line-dot{/if}">
+	{:rand_label(mt_rand(6,10))}
+	<a class="{:randStr(mt_rand(5,6))} text-overflow" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><span class="{:randStr(mt_rand(5,6))} text-muted pull-right">{if condition="$vo.vod_remarks neq ''"}{$vo.vod_remarks|mac_substring=8}{elseif condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}集{else /}已完结{/if}</span>	<em class="{:randStr(mt_rand(5,6))} text-red">{$key} . </em>{$vo.vod_name|mac_substring=12}</a>
+</li>
+{:rand_label(mt_rand(6,10))}

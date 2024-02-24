@@ -1,0 +1,68 @@
+<div class="class=" {:randStr(mt_rand(5,6))} pc_acmsd">
+    {:rand_label(mt_rand(6,10))}
+    <div class="header clearfix">
+        <div class="head wrap clearfix">
+            <div class="logo"><a class="{:randStr(mt_rand(5,6))} logo{if condition=" $maccms.site_logo
+                    neq ''"} logoimg{/if}" href="{$maccms.path}">{$maccms.site_name}</a></div>
+            <div class="searchvod">
+                <form name="formsearch" id="formsearch" action="/search/-------------.html" method="get" target="_self">
+                    <input type="text" id="searchword" name="wd" class="search-input" value="请输入影片名称>>>"
+                        onfocus="if(this.value=='请输入影片名称>>>'){this.value='';}"
+                        onblur="if(this.value==''){this.value='请输入影片名称>>>';};">
+                    <input type="submit" class="sub" value="搜 索">
+                </form>
+                <div class="hotwords mbyc">热搜：
+                    {maccms:vod num="5" type="'.$obj['type_id'].'" order="desc" by="hits_week"}
+                    <a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a>&nbsp;
+                    {/maccms:vod}
+                </div>
+                <a href="javascript:void(0);" rel="nofollow" target="_self" class="caidan_btn pcyc"><i
+                        class="caidan"></i><span>导航</span></a>
+
+            </div>
+			{:rand_label(mt_rand(6,10))}
+			    <ul id="tbmov-plus" class="mbyc">
+                    <li><a id="new" href="/new.html"><i class="ui-icon new-icon"></i>最近<br>更新</a></li>
+                    <li><a href="/rank.html"><i class="ui-icon top-icon"></i>影片<br>排行</a></li>
+                </ul>
+				</div>
+            <div class="sjmenu pcyc">
+                <ul class="nav wrap clearfix">
+					<li {if condition="$maccms.aid eq 1"}class="{:randStr(mt_rand(5,6))} current"{/if}><a href="{$maccms.path}"><i class="fa fa-home"></i>首页</a></li>
+				
+					{maccms:type num="10" order="asc" by="sort" ids="parent"}
+	                <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="{:randStr(mt_rand(5,6))} active"{/if}><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+	                {/maccms:type}
+
+                </ul>
+            </div>
+            <div class="menu mbyc">
+                <ul class="nav wrap clearfix">
+	<li {if condition="$maccms.aid eq 1"}class="{:randStr(mt_rand(5,6))} current"{/if}><a href="{$maccms.path}"><i class="fa fa-home"></i>首页</a></li>
+				
+					{maccms:type num="4" order="asc" by="sort" ids="parent"}
+	                <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="{:randStr(mt_rand(5,6))} active"{/if}><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+	                {/maccms:type}
+                </ul>
+            </div>
+            <div id="subnav" class="mbyc">
+                <div class="layout fn-clear">
+                    <div class="subnav-tv fn-left"><strong class="tv">电影：</strong>
+					{maccms:type ids="7,8,9,10,11,12,13" order="asc" by="sort"}
+					<a href="{:mac_url_type($vo)}">{$vo.type_name}</a><em>|</em>
+					{/maccms:type}
+
+                    </div>
+                    <div class="subnav-movie fn-right"><strong class="movie">电视剧：</strong>
+					{maccms:type ids="14,15,16,17,18,19,20" order="asc" by="sort"}
+					<a href="{:mac_url_type($vo)}">{$vo.type_name}</a><em>|</em>
+					{/maccms:type}
+                    </div>
+                </div>
+            
+        </div>
+
+        <div class="wrap"></div>
+        <div style="margin-top:10px;"></div>
+
+    </div>

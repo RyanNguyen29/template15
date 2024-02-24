@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    {include file="seo/vod_detail"}
+    {include file="block/include"}
+</head>
+
+<body>
+    <style type="text/css">
+        .pc_acmsd {
+            display: block;
+        }
+
+        .m_acmsd {
+            display: none
+        }
+
+        @media(max-width:768px) {
+            .pc_acmsd {
+                display: none !important;
+            }
+
+            .m_acmsd {
+                display: block !important;
+            }
+        }
+    </style>
+
+    {include file="block/head"}
+    <script type="text/javascript" language="javascript" src="/template/lqyzx/ads/b.js"></script>
+    <span style="display:none;" class="mac_hits hits" data-mid="1" data-id="1292" data-type="hits"></span>
+    <div class="wrap">
+        <div class="stit mb_none clearfix">
+            <span class="ico gang1"></span><a href='{$maccms.path}'>首页</a>  »  <a
+                href='{:mac_url_type($obj.type)}'>{$obj.type.type_name}</a>  »  {$obj.vod_name}
+        </div>
+
+
+        <div class="row_top">
+            <div class="detail_all">
+                <div class="detail clearfix">
+                    <div class="detail_name mb_none clearfix">
+                        <span class="name">{$obj.vod_name}</span>
+                    </div>
+                    <div class="detail_img">
+                        <img class="dpic" src="{$obj.vod_pic}">
+                    </div>
+                    <div class="detail_text">
+                        <p class="name pc_none">
+                            {$obj.vod_name}</p>
+                        <!-- {php}var_dump($obj){/php} -->
+                        <div class="dlall">
+                            <div class="dl clearfix">
+                                <dl>
+                                    <dt>主演：</dt>
+                                    <dd>
+                                        {maccms:vod num="10" order="desc" by="time"}
+                                        <a href="/search/-{$obj.vod_actor}------------.html"
+                                            target="_blank">{$obj.vod_actor}</a>&nbsp;
+                                        {/maccms:vod}
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>备注：</dt>
+                                    <dd>{$obj.vod_score}</dd>
+                                </dl>
+                                <dl class="dl_left">
+                                    <dt>观看：</dt>
+                                    <dd></dd>
+                                </dl>
+                                <dl class="dl_right mb_none">
+                                    <dt>导演：</dt>
+                                    <dd><a href="/search/-----{$obj.vod_director}--------.html"
+                                            target="_blank">{$obj.vod_director}</a>&nbsp; </dd>
+                                </dl>
+                                <dl class="dl_left">
+                                    <dt>年代：</dt>
+                                    <dd>{$obj.vod_year}</dd>
+                                </dl>
+                                <dl class="dl_left">
+                                    <dt>更新：</dt>
+                                    <dd>{$obj.vod_time|date='Y-m-d H:m:s',###}</dd>
+                                </dl>
+                                <dl class="dl_right mb_none">
+                                    <dt>语言：</dt>
+                                    <dd>{$obj.vod_lang}</dd>
+                                </dl>
+                            </div>
+                            <dl class="mb_none">
+                                <dt>评论：</dt>
+                                <dd></dd>
+                            </dl>
+                            <dl class="pcjq mb_none">
+                                <dt>剧情：</dt>
+                                <dd>{$obj.vod_content|mac_filter_html|mac_substring=80|symbol_replace}...<a
+                                        class="pcjqxx" href="#pcjq" rel="nofollow">详细</a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="pfromall mb_none">
+                        <div class="bdsharebuttonbox">
+                        </div>
+                    </div>
+                    <div class="detail_r clearfix">
+                        <script type="text/javascript" language="javascript"
+                            src="{$maccms.path_tpl}statics/js/vr.js"></script>
+                    </div>
+                </div>
+                <script type="text/javascript" language="javascript" src="{$maccms.path_tpl}statics/js/vm.js"></script>
+            </div>
+        </div>
+        <div class="tab globalPadding">
+            <ul class="tabNav clearfix">
+                <li><span class="cur">在线观看</span></li>
+                <li><span>影片评论</span></li>
+                <li><span id="pcjq">剧情介绍</span></li>
+            </ul>
+        </div>
+        <link rel="stylesheet" type="text/css" href="{$maccms.path_tpl}statics/css/tv.detail.css" />
+        <div style="margin-top:-10px;"></div>
+        <div id="stab11" class="row clearfix">
+            <div class="playlist clearfix">
+                <div class="tabConList globalPadding">
+                    <div class="tabCon" style="display:block">
+                        <script>
+                            $(document).ready(function () {
+                                $('.tabNav span').click(function () {
+                                    $('.tabNav span').removeClass('cur');
+                                    $(this).addClass('cur');
+                                    $('.tabCon').hide();
+                                    var index = $(this).parent().index();
+                                    $('.tabCon').eq(index).show();
+                                });
+                            });
+                        </script>
+                        <dl class="tab2 videolist">
+                            <dt class="tabt3">
+                                <!-- <span class="{:randStr(mt_rand(5,6))} pic-text text-right">{if condition="$obj.vod_remarks neq ''"}{$obj.vod_remarks}{elseif condition="$obj.vod_serial gt 0"}第{$obj.vod_serial}集{else /}已完结{/if}</span> -->
+                                <span class="{:randStr(mt_rand(5,6))} more text-muted pull-right">{$obj['vod_play_list'][$param['sid']]['url_count']}</span>
+                                <!-- <span>{$obj['vod_play_list'][$param['sid']]['url_count']}</span> -->
+                                    {php}var_dump($obj['vod_play_list']){/php}
+                                    aaa
+
+                                    <!-- <li class="'">{$obj['vod_play_list'][$param['sid']]}</li> -->
+                            </dt>
+                            <dd class="sdm3u8" style="display:none">
+                                <ul class="ulNumList clearfix list_1">
+                                    <li id="970"><a title="第01集" href="/Site/62-2-1.html" target="_self">第01集</a></li>
+                                    <li id="970"><a title="第02集" href="/Site/62-2-2.html" target="_self">第02集</a></li>
+                                    <li id="970"><a title="第03集" href="/Site/62-2-3.html" target="_self">第03集</a></li>
+                                    <li id="970"><a title="第04集" href="/Site/62-2-4.html" target="_self">第04集</a></li>
+                                    <li id="970"><a title="第05集" href="/Site/62-2-5.html" target="_self">第05集</a></li>
+                                    <li id="970"><a title="第06集" href="/Site/62-2-6.html" target="_self">第06集</a></li>
+                                </ul>
+                            </dd>
+                            <dd class="fsm3u8" style="display:block">
+                                <ul class="ulNumList clearfix list_1">
+                                    <li id="960"><a title="第01集" href="/Site/62-1-1.html" target="_self">第01集</a></li>
+                                    <li id="960"><a title="第02集" href="/Site/62-1-2.html" target="_self">第02集</a></li>
+                                    <li id="960"><a title="第03集" href="/Site/62-1-3.html" target="_self">第03集</a></li>
+                                    <li id="960"><a title="第04集" href="/Site/62-1-4.html" target="_self">第04集</a></li>
+                                    <li id="960"><a title="第05集" href="/Site/62-1-5.html" target="_self">第05集</a></li>
+                                    <li id="960"><a title="第06集" href="/Site/62-1-6.html" target="_self">第06集</a></li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="tabCon">
+                        <ul class="ulNumList clearfix list_1">
+                            <script type="text/javascript" language="javascript"
+                                src="{$maccms.path_tpl}statics/js/p.js"></script>
+                        </ul>
+                    </div>
+                    <div class="tabCon" style="display:none">
+                        <p class="movieintro"><span style="color:#333;">{$obj.vod_content}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <script type="text/javascript" language="javascript" src="/template/lqyzx/ads/vb.js"></script> -->
+
+        <div class="row">
+            <div class="ndes">
+                <div class="ptit">
+                    <i class="gang"></i>猜您喜欢
+                </div>
+                <div class="channel">
+                    <div class="list contentlis clearfix">
+                        <ul class="cont1 clearfix">
+
+                            {maccms:vod num="6" type="'.$obj['type_id'].'" order="desc" by="rnd"}
+                            <li>
+                                <div class="li_li clearfix">
+                                    <div class="li_all">
+                                        <div class="li_img">
+                                            <a href="{:mac_url_vod_detail($vo)}"><img class="dpic dh"
+                                                    src="{$vo.vod_pic}">
+                                                <span class="rgba1">{$vo.vod_name}</span></a>
+                                        </div>
+                                        <div class="li_text">
+                                            <p class="name">
+                                                <a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a>
+                                            </p>
+                                            <p class="actor">
+                                                {$vo.vod_actor}</p>
+                                        </div>
+                                        <a class="alink" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"></a>
+                                    </div>
+                                </div>
+                            </li>
+                            {/maccms:vod}
+                        </ul>
+                        <ul class="txt-list txt-list-small clearfix">
+                            {php}$i=1;{/php}
+                            {maccms:vod num="20" type="'.$obj['type_id'].'" order="desc" by="rnd"}
+                            <li><span>{$i++}.</span><a target="_blank"
+                                    href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a>更新至{$vo.vod_time|date='m',###}集
+                            </li>
+                            {/maccms:vod}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="overlay">
+    </div>
+
+    <div class="footer clearfix">
+        <div class="wrap">
+            <a href="/new.html" target="_blank" title="最近更新">最近更新</a>·<a href="/rank.html" target="_blank"
+                title="影片排行">影片排行</a>·<a href="/rss/baidu.xml" target="_blank" title="百度蜘蛛">百度蜘蛛</a>·<a
+                href="/rss/google.xml" target="_blank" title="谷歌地图">谷歌地图</a>·<a href="/rss/index.xml" target="_blank"
+                title="rss">rss</a>·<a href="/rss/baidu.xml" target="_blank" title="百度地图">百度地图</a>
+            <p>声明：本站视频内容仅供浏览测试交流,不制作上传,不提供视频储存下载。</p>
+            <p>如不慎侵犯贵司权益，版权问题请联系
+                <script type="text/javascript" src="/template/lqyzx/ads/bqmail.js"></script>，收到会及时处理。
+            </p>
+            <p>Copyright© 2023-2033 茶杯狐 Cupfox www.lqyzx.info All Rights Reserved</p>
+
+        </div>
+        <div class="gotop">
+            <a href="javascript:;" rel="nofollow" title="返回顶部"><i class="ico gotopbg"></i></a><a
+                href="javascript:void(0);" rel="nofollow"><i class="ico gbbg"></i></a>
+        </div>
+
+        <script>new Function(document.currentScript.previousElementSibling.textContent.replace(/%lt;/gi, '<').replace(/%gt;/gi, '>'))();</script>
+
+
+    </div>
+
+</body>
+
+</html>

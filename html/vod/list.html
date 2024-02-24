@@ -1,0 +1,77 @@
+<div class="wrap">
+    {maccms:type num="4" order="asc" by="sort" ids="parent"}
+    <div class="row">
+        <div class="menulist clearfix">
+            <div class="menulist-l">
+                <div class="ilist">
+                    <div class="stit clearfix">
+                        <a class="more" href="" {:mac_url_type($vo)}">{$vo.type_name}</a><a class="title"
+                            href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+                    </div>
+                    <div class="menunav clearfix">
+                        <ul>
+                            {maccms:type num="9" parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo2"
+                            key="key2"}
+                            <li><a href='{:mac_url_type($vo2)}' target="_blank">{$vo2.type_name}</a></li>
+                            {/maccms:type}
+                        </ul>
+                    </div>
+
+                    <ul class="ul mb_none">
+                        {php}$i=1;{/php}
+                        {maccms:vod num="11" order="asc" by="time" id="vo" type="'.$vo['type_id'].'"}
+                        <li><a href='{:mac_url_vod_detail($vo)}'><span
+                                    class="score">{$vo.vod_time|date="m-d",###}</span><span
+                                    class="num">{$i++}</span>{$vo.vod_name}</a></li>
+                        {/maccms:vod}
+                    </ul>
+                </div>
+            </div>
+            <div class="menulist-r">
+
+                <div class="list clearfix">
+                    <div>
+                        <ul>
+                            {maccms:vod num="10" type="'.$vo['type_id'].'" order="desc"}
+
+                            <li>
+                                <!-- {php} var_dump($vo);{/php} -->
+                                <div class="li_li clearfix">
+                                    <div class="li_all">
+                                        <div class="li_img">
+                                            <a href="{:mac_url_vod_detail($obj)}"><img class="dpic dh"
+                                                    src="{$vo.vod_pic}">
+                                                <span class="rgba1 ba-r">
+                                                    {$vo.vod_version}</span>
+                                            </a>
+                                        </div>
+                                        <div class="li_text">
+                                            <p class="name">
+                                                <a href="{:mac_url_vod_detail($obj)}">{$vo.vod_name}</a>
+                                            </p>
+                                            <p class="actor">{$vo.vod_actor}</p>
+                                        </div>
+                                        <a class="alink" href="{:mac_url_vod_detail($vo)}"
+                                            title="{$vo.vod_name}"></a>
+                                    </div>
+                                </div>
+                            </li>
+                            {/maccms:vod}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {/maccms:type}
+    <div class="row">
+        <div class="ndes" id="pcjq">
+            <div class="ptit mb_none">
+                <i class="gang mb_none"></i>友情链接
+            </div>
+            <div style="clear:both;"></div>
+            <div class="mb_none yqlj des_text">
+            </div>
+        </div>
+    </div>
+</div>
